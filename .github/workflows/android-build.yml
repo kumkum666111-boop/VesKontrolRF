@@ -1,15 +1,6 @@
 name: Android build and tests
-
-on:
-push:
-branches: [main, master]
-pull_request:
-workflow_dispatch:
-
-jobs:
-build:
-runs-on: ubuntu-latest
-
+'on': push: branches: - main - master pull_request: workflow_dispatch:
+jobs: build: runs-on: ubuntu-latest
 steps:
   - name: Checkout
     uses: actions/checkout@v4
@@ -23,7 +14,7 @@ steps:
   - name: Set up Android SDK
     uses: android-actions/setup-android@v3
 
-  - name: Install Android SDK 36
+  - name: Install Android SDK
     run: |
       sdkmanager --install "platforms;android-36" "build-tools;36.0.0"
 
@@ -42,4 +33,4 @@ steps:
     uses: actions/upload-artifact@v4
     with:
       name: VesKontrolRF-debug-apk
-      path: app/build/outputs/apk/debug/app-debug.apk
+      path: app/build/outputs/apk/debug/app-debug.apk 
